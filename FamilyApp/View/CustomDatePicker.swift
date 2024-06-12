@@ -11,7 +11,6 @@ struct CustomDatePicker: View {
     @Binding var currentDate: Date
     
     //MARK: Month update on arrow button clicks..
-    
     @State var currentMonth: Int = 0
     
     var body: some View {
@@ -62,17 +61,46 @@ struct CustomDatePicker: View {
             
             LazyVGrid(columns: columns,spacing: 15) {
                 ForEach(extractDate()){ value in
-                    Text("\(value.day)")
+                    CardView(value: value)
                 }
             }
             
         }
-        .onChange(of: currentMonth) { newValue in
-                // updating Month
+        .onChange(of: currentMonth) {
+            // updating Month
             currentDate = getCurrentMonth()
-            
-            
         }
+    }
+    
+    @ViewBuilder
+    func CardView(value: DateValue)->some View{
+        VStack{
+            if value.day != -1 {
+                if (tasks.first(where: { task in
+                    return isSameDay(date1: task.taskDate, date2: currentDate)
+                }) != nil){
+                    Text("\(value.day)")
+                        .font(.title3.bold())
+                    Spacer()
+                    Circle()
+                        .fill(Color("cyan"))
+                        .frame(width: 8, height:8)
+                } else {
+                    Text("\(value.day)")
+                        .font(.title3.bold())
+                    Spacer()
+                }
+            }
+        }
+        .padding(.vertical, 8)
+        .frame(height: 50, alignment: .top)
+    }
+    
+    //checking date
+    func isSameDay(date1: Date, date2: Date) -> Bool{
+        let calendar = Calendar.current
+        
+        return calendar.isDate(date1, inSameDayAs: date2)
     }
     
     func extraDate()->[String]{
@@ -98,11 +126,20 @@ struct CustomDatePicker: View {
         
         let currentMonth = getCurrentMonth()
         
-        return currentMonth.getAllDates().compactMap { date -> DateValue in
+        var days =  currentMonth.getAllDates().compactMap { date -> DateValue in
             let day = calendar.component(.day, from: date)
             
             return DateValue(day: day, date: date)
         }
+        
+        //adding offset days to get exact week day...
+        let firstWeekday = calendar.component(.weekday, from: days.first?.date ?? Date())
+        
+        for _ in 0..<firstWeekday - 1{
+            days.insert(DateValue(day: -1, date: Date()), at: 0)
+        }
+        
+        return days
     }
     
 }
@@ -121,12 +158,10 @@ extension Date{
         //getting starting date
         let startDate = calendar.date(from: Calendar.current.dateComponents([.year,.month], from: self))!
         
-        var range = calendar.range(of: .day, in: .month, for: startDate)!
-        
-        range.removeLast()
-        
+        let range = calendar.range(of: .day, in: .month, for: startDate)!
+                
         return range.compactMap { day -> Date in
-            return calendar.date(byAdding: .day, value: day == 1 ? 0 : day, to: startDate)!
+            return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
         }
     }
 }
