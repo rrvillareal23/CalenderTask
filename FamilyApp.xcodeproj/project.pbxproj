@@ -14,6 +14,7 @@
 		B7261B712C15FA6B00D936F3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7261B702C15FA6B00D936F3 /* Home.swift */; };
 		B7261B732C15FBB600D936F3 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7261B722C15FBB600D936F3 /* CustomDatePicker.swift */; };
 		B7EA0AD82C17C8D500BF5E9B /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA0AD72C17C8D500BF5E9B /* DateValue.swift */; };
+		B7EA0ADA2C18E96E00BF5E9B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA0AD92C18E96E00BF5E9B /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		B7261B702C15FA6B00D936F3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		B7261B722C15FBB600D936F3 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		B7EA0AD72C17C8D500BF5E9B /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
+		B7EA0AD92C18E96E00BF5E9B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				B7EA0AD72C17C8D500BF5E9B /* DateValue.swift */,
+				B7EA0AD92C18E96E00BF5E9B /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7261B732C15FBB600D936F3 /* CustomDatePicker.swift in Sources */,
+				B7EA0ADA2C18E96E00BF5E9B /* Task.swift in Sources */,
 				B7261B632C15F7EE00D936F3 /* ContentView.swift in Sources */,
 				B7261B712C15FA6B00D936F3 /* Home.swift in Sources */,
 				B7261B612C15F7EE00D936F3 /* FamilyAppApp.swift in Sources */,
