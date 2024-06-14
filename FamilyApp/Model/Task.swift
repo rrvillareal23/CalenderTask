@@ -1,29 +1,20 @@
-//
-//  File.swift
-//  FamilyApp
-//
-//  Created by Ricky Villareal on 6/11/24.
-//
-
-import Foundation
-
-//Task Model
+import SwiftUI
 
 struct Task: Identifiable {
-    var id =  UUID().uuidString
+    var id = UUID().uuidString
     var title: String
     var time: Date = Date()
 }
 
-struct TaskMetaData: Identifiable{
+struct TaskMetaData: Identifiable {
     var id = UUID().uuidString
     var task: [Task]
     var taskDate: Date
 }
 
-func getSampleDate(offset: Int) ->Date{
-    let calender = Calendar.current
-    let date = calender.date(byAdding: .day, value: offset, to: Date())
+func getSampleDate(offset: Int) -> Date {
+    let calendar = Calendar.current
+    let date = calendar.date(byAdding: .day, value: offset, to: Date())
     return date ?? Date()
 }
 
@@ -32,7 +23,6 @@ var tasks: [TaskMetaData] = [
         Task(title: "Talk to Parents"),
         Task(title: "Make changes to app"),
         Task(title: "Workout"),
-
     ], taskDate: getSampleDate(offset: 1)),
     
     TaskMetaData(task: [
@@ -58,5 +48,4 @@ var tasks: [TaskMetaData] = [
     TaskMetaData(task: [
         Task(title: "Dinner Plans")
     ], taskDate: getSampleDate(offset: -20)),
-    
 ]
